@@ -1,0 +1,62 @@
+{
+  "name": "genpark-personal-agent-blood-homocysteine-methylation-mthfr-skill",
+  "version": "1.0.0",
+  "title": "Blood Homocysteine Methylation & MTHFR Variant Sentinel Skill",
+  "description": "Plasma total homocysteine (\u00b5mol/L) cardiovascular risk stratifier, MTHFR C677T/A1298C variant kinetic indexing, and bioactive methyl-donor titration. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "homocysteine",
+    "methylation",
+    "mthfr",
+    "cardiovascular-risk",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "stratify_homocysteine_cardiovascular_risk",
+      "description": "Stratify plasma homocysteine levels into clinical cardiovascular and neurocognitive hazard tiers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "homocysteine_umol_l": {
+            "type": "number"
+          },
+          "mthfr_genotype": {
+            "type": "string",
+            "enum": [
+              "wild_type_CC",
+              "heterozygous_CT",
+              "homozygous_TT",
+              "compound_heterozygous"
+            ]
+          }
+        },
+        "required": [
+          "homocysteine_umol_l"
+        ]
+      }
+    },
+    {
+      "name": "prescribe_methyl_donor_repletion_protocol",
+      "description": "Formulate targeted 5-MTHF, methylcobalamin, and betaine (TMG) repletion protocol to downregulate plasma homocysteine.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "baseline_homocysteine": {
+            "type": "number"
+          },
+          "target_homocysteine": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "baseline_homocysteine"
+        ]
+      }
+    }
+  ]
+}
